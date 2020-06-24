@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Implementation-Title: engine-openoffice
+Implementation-Version: 0.0.1-SNAPSHOT
+Built-By: yeyuanchun
+Implementation-Vendor-Id: com.bgi.engine.openoffice
+Build-Jdk: 1.8.0_172
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
+ ot-starter-parent/engine-openoffice
+Created-By: Maven Integration for Eclipse
+

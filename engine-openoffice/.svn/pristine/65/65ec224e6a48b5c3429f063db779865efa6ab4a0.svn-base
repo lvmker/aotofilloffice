@@ -1,0 +1,24 @@
+server.port=8085
+spring.application.name=engine-openoffice
+temp.dir=/data/temp/
+fastdfs.url=http://10.49.32.111:8080/engine-fastdfs/fdfsFile/uploadFile
+##注册中心配置
+# 设置实例id
+eureka.instance.instance-id=${spring.cloud.client.ip-address}:${server.port}
+# 指定此实例的ip
+eureka.instance.ip-address=127.0.0.1
+# 注册时使用ip而不是主机名
+eureka.instance.prefer-ip-address=true
+# fegin 注册配置
+eureka.client.fetch-registry=true
+eureka.client.register-with-eureka=true
+#注册中心地址
+eureka.client.serviceUrl.defaultZone=http://10.49.32.111:8001/eureka/,http://10.49.32.112:8001/eureka/
+#心跳检测检测与续约时间
+#每间隔1s，向服务端发送一次心跳，证明自己依然'存活'
+eureka.instance.lease-renewal-interval-in-seconds=1
+#如果我10s之内没有发心送跳，表示当前服务状态down，将次服务踢出掉
+eureka.instance.lease-expiration-duration-in-seconds=10
+openoffice.host=10.49.32.111
+libreoffice.home=/opt/libreoffice6.2/program/
+

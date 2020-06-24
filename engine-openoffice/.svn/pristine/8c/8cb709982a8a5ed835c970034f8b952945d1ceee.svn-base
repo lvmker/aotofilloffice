@@ -1,0 +1,29 @@
+package com.bgi.engine.openoffice.service;
+
+import org.apache.commons.pool2.impl.GenericObjectPoolConfig;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+import com.bgi.engine.openoffice.connectionpool.OpenofficeConnectionFactory;
+import com.bgi.engine.openoffice.connectionpool.OpenofficeConnectionPool;
+
+@Configuration
+public class OpenofficeConnectionPoolConfiguration {
+	@Value("${openoffice.host}")
+	private String host;
+	@Bean
+	public OpenofficeConnectionFactory openofficeConnectionFactory() {
+		return new OpenofficeConnectionFactory(host);
+	}
+	@Bean
+	@SuppressWarnings("rawtypes")
+	public OpenofficeConnectionPool openofficeConnectionPool(OpenofficeConnectionFactory openofficeConnectionFactory) {
+        GenericObjectPoolConfig config = new GenericObjectPoolConfig();
+        config.setMaxTotal(5);
+        config.setJmxEnabled(false);
+        //设置获取连接超时时间
+        config.setMaxWaitMillis(1000);
+		return new OpenofficeConnectionPool(openofficeConnectionFactory, config);
+	}
+}
